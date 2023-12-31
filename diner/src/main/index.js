@@ -2,20 +2,36 @@
 import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import { join } from 'path'
-import fs from 'fs'
 import icon from '../../resources/icon.png?asset'
+import { listMembers, login, logout } from './memberControllers'
 
-const readFile = async (filePath) => {
+ipcMain.handle('list:members', async () => {
   try {
-    const data = await fs.promises.readFile(filePath)
-    return data
+    const members = await listMembers()
+    return JSON.parse(members) // toString() transforms Buffer (of any type) into text content
   } catch (error) {
-    console.error(`Got an error trying to read the file: ${error.message}`)
+    console.error(error)
+    return error
   }
-}
+})
 
-// readFile('src/main/data/members.json')
+ipcMain.handle('login:members', async (event, { id, password }) => {
+  try {
+    const member = await login(id, password, import.meta.env.MAIN_VITE_SECRET_TOKEN_KEY)
+    return member
+  } catch (error) {
+    return error
+  }
+})
 
+ipcMain.handle('logout:members', async (event, { id, password }) => {
+  try {
+    const member = await logout(id, password)
+    return member
+  } catch (error) {
+    return error
+  }
+})
 // ipcMain.handle('list:members', async () => {
 //   try {
 //     // const members = await readFile('data/members.json')
@@ -64,13 +80,12 @@ function createWindow() {
       sandbox: false
     }
   })
-
   // Opens devtools in the window in development environment
   // if (is.dev) {
   //   mainWindow.webContents.openDevTools()
   // }
   // CHANGE TO CONDITIONAL DEPLOYMENT ABOVE
-  mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools() // While in Development
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
@@ -105,7 +120,6 @@ app.whenReady().then(() => {
   })
 
   createWindow()
-
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
