@@ -1,7 +1,32 @@
 [
-  { "id": 3, "name": "Katie", "age": 38 },
-  { "id": 4, "name": "Alex", "age": 46 },
-  { "id": "7", "name": "Lily", "age": 37 },
-  { "id": "17", "name": "Dana", "age": 36 },
-  { "id": "69", "name": "Anna", "age": "35" }
+  {
+    "id": 1,
+    "name": "Megan Griffin",
+    "password": "$2a$10$QyGl9axYKBFhgi4X70LAt.qB1i8gXgv7pBcdZt.dx9WllvslvwZ5W",
+    "isAdmin": false
+  },
+  {
+    "id": 2,
+    "name": "Joe Swanson",
+    "password": "$2a$10$omL4vd9JmkMmKexkBYDCh.wNRneJ5GTVp.bikGaStqc3BduACBrda",
+    "isAdmin": false
+  },
+  {
+    "id": 3,
+    "name": "Glen Quagmire",
+    "password": "$2a$10$4i8Zhe6hY4LHt8whBbIcQuy7lhg/I2iAxZKZFlkZmlpG6bLypRAVu",
+    "isAdmin": false
+  },
+  {
+    "id": 4,
+    "name": "Adam West",
+    "password": "$2a$10$/3V8Afql/xnBoJks35b1XOPpizf.dg6Zr.zTSyHn232AtEB3BkbIK",
+    "isAdmin": true
+  },
+  {
+    "id": 5,
+    "name": "Bonnie Swanson",
+    "password": "$2a$10$G0Px1l.jws7xNJt6W0uMpO8ApPsk6F0ItWj7zALrl986KonLVMknS",
+    "isAdmin": false
+  }
 ]

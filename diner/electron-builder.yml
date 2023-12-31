@@ -4,6 +4,7 @@ productName: diner
 #   - 'src/main/data/members.json'
 extraFiles:
   - 'data/members.json'
+  - '.env'
 directories:
   buildResources: build
 files:

@@ -1,13 +1,21 @@
-// const api = window.api
+import { Routes, Route } from 'react-router-dom'
+
+import Login from './pages/general/Login'
+import Tables from './pages/general/Tables'
 
 // NEXT:
-// 1 TEST .ENV AND CONTROLLER FILES...
+
+// 2' ALSO MAKE SURE MODAL PROCESS OR LOGIN DONT TRIGGER SPLASH MESSAGE
+// 3 SEE IF I CAN EXTRACT CONTROLLERS INTO SEPARATE FILES. START ONE BY ONE
+// 4 CHECK CREATED AT FUNCTIONALITY (DATE-TIME CLASS)
+
 const App = () => {
   return (
-    <div className="">
-      <h1>This is a Diner app</h1>
-      <h2>Keep punching Alex...</h2>
-    </div>
+    <Routes>
+      <Route path="" exact element={<Login />} />
+      <Route path="tables" exact element={<Tables />} />
+      {/*<Route path="admin/dashboard" exact element={<AdminDashboard />} />*/}
+    </Routes>
   )
 }
 
